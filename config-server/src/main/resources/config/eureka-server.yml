@@ -1,0 +1,6 @@
+server:
+  port: 4010
+
+spring:
+  application:
+    name: eureka-server
