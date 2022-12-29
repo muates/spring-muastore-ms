@@ -36,7 +36,8 @@
 	<modules>
 		<module>config-server</module>
 		<module>eureka-server</module>
-	</modules>
+        <module>common-service</module>
+    </modules>
 
 	<build>
 		<resources>
