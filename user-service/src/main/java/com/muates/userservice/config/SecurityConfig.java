@@ -37,7 +37,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //http.authorizeRequests().antMatchers(GET, "/api/user/**").hasAnyAuthority("ROLE_USER");
         //http.authorizeRequests().antMatchers(POST, "/api/user/save/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(GET, "/api/user/token/**").permitAll();
-        http.authorizeRequests().antMatchers(POST, "/api/user/save/**").permitAll();
+
+        http.authorizeRequests().antMatchers(POST, "/api/user/v1/register/**").permitAll();
+        http.authorizeRequests().antMatchers(GET, "/api/role/v1/get/**").permitAll();
+
+        // role ekleme ve çıkarma işlemini sadece adminler yapabilecek
+        http.authorizeRequests().antMatchers(POST, "/api/user/role/v1/add/**").hasAnyAuthority("ROLE_ADMIN");
+        http.authorizeRequests().antMatchers(POST, "/api/user/role/v1/remove/**").hasAnyAuthority("ROLE_ADMIN");
+        http.authorizeRequests().antMatchers(POST, "/api/role/v1/add/**").hasAnyAuthority("ROLE_ADMIN");
+
+
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
