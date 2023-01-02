@@ -38,6 +38,7 @@
 		<module>eureka-server</module>
         <module>common-service</module>
         <module>user-service</module>
+        <module>notification-service</module>
     </modules>
 
 	<build>
