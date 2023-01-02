@@ -3,6 +3,7 @@ package com.muates.notificationservice.service.impl;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.muates.notificationservice.model.dto.UserActivationRequest;
+import com.muates.notificationservice.model.entity.EmailToken;
 import com.muates.notificationservice.repository.EmailActivationRepository;
 import com.muates.notificationservice.service.EmailActivationService;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.util.Date;
 
+
 @RequiredArgsConstructor
 @Transactional
 @Service
@@ -30,7 +32,7 @@ public class EmailActivationServiceImpl implements EmailActivationService {
     private final JavaMailSender mailSender;
 
     @Value("${spring.mail.username}")
-    private final String FROM;
+    private String FROM;
 
     @RabbitListener(queues = "${mua.rabbit.user-queue}")
     @Override
@@ -48,6 +50,14 @@ public class EmailActivationServiceImpl implements EmailActivationService {
             helper.setText(text);
 
             mailSender.send(mimeMessage);
+
+            EmailToken emailToken = EmailToken.builder()
+                    .token(token)
+                    .userId(request.getUserId())
+                    .createdDate(new Date())
+                    .build();
+
+            emailActivationRepository.save(emailToken);
         } catch (MessagingException e) {
             log.error("Failed to send email", e);
             throw new IllegalStateException("Failed to send email");

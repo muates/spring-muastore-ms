@@ -6,15 +6,12 @@ import com.muates.userservice.model.dto.request.UserRegistrationRequest;
 import com.muates.userservice.model.entity.User;
 import com.muates.userservice.repository.UserRepository;
 import com.muates.userservice.service.UserService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.muates.userservice.config.RabbitMqConfig.*;
-
-@RequiredArgsConstructor
 @Transactional
 @Service
 public class UserServiceImpl implements UserService {
@@ -22,6 +19,14 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final AmqpTemplate amqpTemplate;
+
+    public UserServiceImpl(UserRepository userRepository,
+                           PasswordEncoder passwordEncoder,
+                           @Qualifier("template") AmqpTemplate amqpTemplate) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.amqpTemplate = amqpTemplate;
+    }
 
     @Override
     public User register(UserRegistrationRequest request) {
@@ -39,6 +44,6 @@ public class UserServiceImpl implements UserService {
     }
 
     private void sendActivationEmail(UserActivationRequest userActivationRequest) {
-        amqpTemplate.convertAndSend(EXCHANGE, USER_ROUTING, userActivationRequest);
+        amqpTemplate.convertAndSend("exchange_mua", "user-route", userActivationRequest);
     }
 }
