@@ -33,6 +33,8 @@ public class UserServiceImpl implements UserService {
         User user = UserConverter.convertToUser(request);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
+        userRepository.save(user);
+
         UserActivationRequest userActivationRequest = new UserActivationRequest();
         userActivationRequest.setEmail(user.getEmail());
         userActivationRequest.setUsername(user.getUsername());
@@ -40,7 +42,7 @@ public class UserServiceImpl implements UserService {
 
         sendActivationEmail(userActivationRequest);
 
-        return userRepository.save(user);
+        return user;
     }
 
     private void sendActivationEmail(UserActivationRequest userActivationRequest) {
