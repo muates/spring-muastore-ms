@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.muates.notificationserviceclient.client.EmailActivationServiceClient;
 import com.muates.userservice.model.entity.User;
 import com.muates.userservice.repository.UserRepository;
 import com.muates.userservice.service.UserActivationService;
@@ -26,6 +27,7 @@ public class UserActivationServiceImpl implements UserActivationService {
     private final Logger log = LoggerFactory.getLogger(UserActivationServiceImpl.class);
 
     private final UserRepository userRepository;
+    private final EmailActivationServiceClient emailActivationServiceClient;
 
     @Override
     public String activateUser(String token) {
@@ -36,25 +38,37 @@ public class UserActivationServiceImpl implements UserActivationService {
         String username = decodedJWT.getSubject();
         String email = decodedJWT.getClaim("email").asString();
 
-        Optional<User> user = userRepository.findUserByUsername(username);
+        Optional<User> optUser = userRepository.findUserByUsername(username);
 
-        if (user.isEmpty()) {
+        if (optUser.isEmpty()) {
             log.error("User does not exist, username: {}", username);
             throw new UsernameNotFoundException("User does not exist");
         }
 
-        if (!Objects.equals(user.get().getEmail(), email)) {
+        User user = optUser.get();
+
+        if (!Objects.equals(user.getEmail(), email)) {
             log.error("Email does not match, email: {}", email);
             throw new RuntimeException("Email does not match");
         }
 
-        user.get().setEnabled(true);
-        user.get().setUpdatedDate(new Date());
-        userRepository.save(user.get());
+        Boolean isEnable = emailActivationServiceClient.isEnable(user.getId());
+
+        if (!isEnable) {
+            log.error("Token already use");
+            throw new RuntimeException("Token already use");
+        }
+
+        user.setEnabled(true);
+        user.setUpdatedDate(new Date());
+        userRepository.save(user);
+
+        emailActivationServiceClient.updateEnable(user.getId());
 
         log.info("User activation successful, username: {}", username);
-        //Todo: notification servisini çağır
 
         return "User activation successful";
     }
+
+    //Todo: metodlara bölünecek
 }

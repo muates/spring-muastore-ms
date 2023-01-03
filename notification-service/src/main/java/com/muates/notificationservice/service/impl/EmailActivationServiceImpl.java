@@ -3,6 +3,7 @@ package com.muates.notificationservice.service.impl;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.muates.notificationservice.model.dto.UserActivationRequest;
+import com.muates.notificationservice.model.entity.EmailToken;
 import com.muates.notificationservice.repository.EmailActivationRepository;
 import com.muates.notificationservice.service.EmailActivationService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.util.Date;
+import java.util.Optional;
+
 
 @RequiredArgsConstructor
 @Transactional
@@ -30,7 +33,7 @@ public class EmailActivationServiceImpl implements EmailActivationService {
     private final JavaMailSender mailSender;
 
     @Value("${spring.mail.username}")
-    private final String FROM;
+    private String FROM;
 
     @RabbitListener(queues = "${mua.rabbit.user-queue}")
     @Override
@@ -40,7 +43,7 @@ public class EmailActivationServiceImpl implements EmailActivationService {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
 
             String token = createToken(request);
-            String text = "http://localhost:8081/api/user/activation?token=" + token;
+            String text = "http://localhost:8081/api/user/v1/activation/" + token;
 
             helper.setFrom(FROM);
             helper.setTo(request.getEmail());
@@ -48,10 +51,45 @@ public class EmailActivationServiceImpl implements EmailActivationService {
             helper.setText(text);
 
             mailSender.send(mimeMessage);
+
+            EmailToken emailToken = EmailToken.builder()
+                    .token(token)
+                    .userId(request.getUserId())
+                    .enable(true)
+                    .createdDate(new Date())
+                    .build();
+
+            emailActivationRepository.save(emailToken);
         } catch (MessagingException e) {
             log.error("Failed to send email", e);
             throw new IllegalStateException("Failed to send email");
         }
+    }
+
+    @Override
+    public void updateEnable(Long userId) {
+        Optional<EmailToken> optEmailToken = emailActivationRepository.findByUserId(userId);
+
+        if (optEmailToken.isEmpty())
+            throw new RuntimeException();
+
+        EmailToken emailToken = optEmailToken.get();
+        emailToken.setEnable(false);
+        emailToken.setUpdatedDate(new Date());
+
+        emailActivationRepository.save(emailToken);
+    }
+
+    @Override
+    public Boolean isEnable(Long userId) {
+        Optional<EmailToken> optEmailToken = emailActivationRepository.findByUserId(userId);
+
+        if (optEmailToken.isEmpty())
+            throw new RuntimeException();
+
+        EmailToken emailToken = optEmailToken.get();
+
+        return emailToken.getEnable();
     }
 
     private String createToken(UserActivationRequest request) {
@@ -60,7 +98,7 @@ public class EmailActivationServiceImpl implements EmailActivationService {
                 .withSubject(request.getUsername())
                 .withClaim("userId", request.getUserId())
                 .withClaim("email", request.getEmail())
-                .withExpiresAt(new Date(System.currentTimeMillis() + 10 * 60 * 1000))
+                .withExpiresAt(new Date(System.currentTimeMillis() + 86400000))
                 .sign(algorithm);
     }
 }

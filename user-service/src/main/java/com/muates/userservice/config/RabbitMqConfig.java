@@ -5,31 +5,20 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMqConfig {
 
-    @Value("${mua.rabbit.user-queue}")
-    public static String USER_QUEUE;
-
-    @Value("${mua.rabbit.user-route}")
-    public static String USER_ROUTING;
-
-    @Value("${mua.rabbit.exchange}")
-    public static String EXCHANGE;
-
-
     @Bean
     public Queue userQueue() {
-        return new Queue(USER_QUEUE);
+        return new Queue("user_queue");
     }
 
     @Bean
     public DirectExchange exchange() {
-        return new DirectExchange(EXCHANGE);
+        return new DirectExchange("exchange_mua");
     }
 
     @Bean
@@ -37,7 +26,7 @@ public class RabbitMqConfig {
         return BindingBuilder
                 .bind(userQueue)
                 .to(exchange)
-                .with(USER_ROUTING);
+                .with("user-route");
     }
 
     @Bean
