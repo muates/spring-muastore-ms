@@ -35,6 +35,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.muates</groupId>
+            <artifactId>notification-service-client</artifactId>
+            <version>1.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.postgresql</groupId>
