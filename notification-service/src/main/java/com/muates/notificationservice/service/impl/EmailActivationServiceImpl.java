@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.util.Date;
+import java.util.Optional;
 
 
 @RequiredArgsConstructor
@@ -42,7 +43,7 @@ public class EmailActivationServiceImpl implements EmailActivationService {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
 
             String token = createToken(request);
-            String text = "http://localhost:8081/api/user/activation?token=" + token;
+            String text = "http://localhost:8081/api/user/v1/activation/" + token;
 
             helper.setFrom(FROM);
             helper.setTo(request.getEmail());
@@ -54,6 +55,7 @@ public class EmailActivationServiceImpl implements EmailActivationService {
             EmailToken emailToken = EmailToken.builder()
                     .token(token)
                     .userId(request.getUserId())
+                    .enable(true)
                     .createdDate(new Date())
                     .build();
 
@@ -64,13 +66,39 @@ public class EmailActivationServiceImpl implements EmailActivationService {
         }
     }
 
+    @Override
+    public void updateEnable(Long userId) {
+        Optional<EmailToken> optEmailToken = emailActivationRepository.findByUserId(userId);
+
+        if (optEmailToken.isEmpty())
+            throw new RuntimeException();
+
+        EmailToken emailToken = optEmailToken.get();
+        emailToken.setEnable(false);
+        emailToken.setUpdatedDate(new Date());
+
+        emailActivationRepository.save(emailToken);
+    }
+
+    @Override
+    public Boolean isEnable(Long userId) {
+        Optional<EmailToken> optEmailToken = emailActivationRepository.findByUserId(userId);
+
+        if (optEmailToken.isEmpty())
+            throw new RuntimeException();
+
+        EmailToken emailToken = optEmailToken.get();
+
+        return emailToken.getEnable();
+    }
+
     private String createToken(UserActivationRequest request) {
         Algorithm algorithm = Algorithm.HMAC256("secret".getBytes());
         return JWT.create()
                 .withSubject(request.getUsername())
                 .withClaim("userId", request.getUserId())
                 .withClaim("email", request.getEmail())
-                .withExpiresAt(new Date(System.currentTimeMillis() + 10 * 60 * 1000))
+                .withExpiresAt(new Date(System.currentTimeMillis() + 86400000))
                 .sign(algorithm);
     }
 }
