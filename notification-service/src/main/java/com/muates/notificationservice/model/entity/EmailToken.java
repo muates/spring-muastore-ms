@@ -1,6 +1,6 @@
 package com.muates.notificationservice.model.entity;
 
-import com.muates.commonservice.model.BaseEntity;
+import com.muates.commonservice.model.entity.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
