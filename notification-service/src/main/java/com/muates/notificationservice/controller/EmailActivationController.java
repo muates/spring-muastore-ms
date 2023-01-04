@@ -26,6 +26,5 @@ public class EmailActivationController {
     public Boolean isEnable(@PathVariable Long userId) {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path(IS_ENABLE).toUriString());
         return ResponseEntity.created(uri).body(emailActivationService.isEnable(userId)).getBody();
-
     }
 }
