@@ -26,13 +26,13 @@ public class UserRemoveServiceImpl implements UserRemoveService {
         List<User> users = userRepository.findAllExpiredUserByCreatedDate();
         userRepository.deleteAll(users);
 
-        NotificationDto notificationDto = new NotificationDto();
-        notificationDto.setSubject("Your account removed");
-        notificationDto.setText("User removed, because your didn't activate");
+        NotificationDto notification = new NotificationDto();
+        notification.setSubject("Your account removed");
+        notification.setText("User removed, because your didn't activate");
 
         for (var user : users) {
-            notificationDto.setEmail(user.getEmail());
-            kafkaTemplate.send("user_remove_notification", notificationDto);
+            notification.setEmail(user.getEmail());
+            kafkaTemplate.send("user_notification", notification);
             log.info("User removed, Id: {}, Email: {}", user.getId(), user.getEmail());
         }
     }
