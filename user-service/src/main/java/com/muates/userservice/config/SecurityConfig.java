@@ -15,8 +15,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.*;
 
 @RequiredArgsConstructor
 @EnableWebSecurity
@@ -41,6 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(POST, "/api/user/v1/register/**").permitAll();
         http.authorizeRequests().antMatchers(GET, "/api/role/v1/get/**").permitAll();
         http.authorizeRequests().antMatchers(GET, "/api/user/v1/activation/**").permitAll();
+        http.authorizeRequests().antMatchers(PUT, "/api/password/v1/change/**").hasAnyAuthority("ROLE_USER");
 
         // role ekleme ve çıkarma işlemini sadece adminler yapabilecek
         http.authorizeRequests().antMatchers(POST, "/api/user/role/v1/add/**").hasAnyAuthority("ROLE_ADMIN");
