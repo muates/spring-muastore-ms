@@ -1,4 +1,4 @@
-package com.muates.notificationservice.model.entity.schema;
+package com.muates.userservice.model.entity.schema;
 
 public class EmailTokenSchema {
     public static final String TABLE_NAME = "mail_tokens";

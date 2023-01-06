@@ -28,7 +28,7 @@ public class UserMessageServiceImpl implements UserMessageService {
     private String FROM;
 
     @KafkaListener(
-            topics = "user_remove_notification",
+            topics = "user_notification",
             groupId = "group_id",
             containerFactory = "userListenerFactory"
     )

@@ -27,5 +27,4 @@ public class Role extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private RoleName roleName;
 
-    //Todo: role için oto ekleme ayarlanacak
 }

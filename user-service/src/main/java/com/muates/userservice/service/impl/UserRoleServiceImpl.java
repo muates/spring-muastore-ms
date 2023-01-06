@@ -24,8 +24,6 @@ public class UserRoleServiceImpl implements UserRoleService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
 
-    //Todo: ortak metoda taşınacak
-
     @Override
     public UserRoleDto addRoleToUser(UserRoleRequest request) {
         Optional<User> user = userRepository.findUserByUsername(request.getUsername());

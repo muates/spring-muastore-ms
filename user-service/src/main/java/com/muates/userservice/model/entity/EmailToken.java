@@ -1,4 +1,4 @@
-package com.muates.notificationservice.model.entity;
+package com.muates.userservice.model.entity;
 
 import com.muates.commonservice.model.entity.BaseEntity;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 
-import static com.muates.notificationservice.model.entity.schema.EmailTokenSchema.*;
+import static com.muates.userservice.model.entity.schema.EmailTokenSchema.*;
 
 @Entity
 @Table(name = TABLE_NAME)

@@ -4,29 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fa5eaff-fc2d-4d3b-a161-e13416350c43" name="Changes" comment="...">
-      <change afterPath="$PROJECT_DIR$/common-service/src/main/java/com/muates/commonservice/model/dto/NotificationDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/muates/notificationservice/config/KafkaConsumerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/muates/notificationservice/service/UserMessageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/muates/notificationservice/service/impl/UserMessageServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/config/KafkaProducerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/config/ShedlockConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/scheduler/UserSchedulerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/scheduler/service/UserRemoveService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/scheduler/service/impl/UserRemoveServiceImpl.java" afterDir="false" />
+    <list default="true" id="8fa5eaff-fc2d-4d3b-a161-e13416350c43" name="Changes" comment="kafka added">
+      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/controller/endpoint/UserActivationEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/model/entity/EmailToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/model/entity/schema/EmailTokenSchema.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/repository/EmailTokenRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-service/src/main/java/com/muates/commonservice/model/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-service/src/main/java/com/muates/commonservice/model/entity/BaseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/target/classes/bootstrap.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notification-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/muates/notificationservice/controller/EmailActivationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/muates/notificationservice/controller/EmailActivationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/muates/notificationservice/model/entity/EmailToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/muates/notificationservice/model/entity/EmailToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service-client/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service-client/src/main/java/com/muates/notificationserviceclient/client/EmailActivationServiceClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service-client/src/main/java/com/muates/notificationserviceclient/config/NotificationClientConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/muates/notificationservice/config/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/muates/notificationservice/config/KafkaConsumerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/muates/notificationservice/config/RabbitMqConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/muates/notificationservice/controller/EmailActivationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/muates/notificationservice/controller/endpoint/EmailActivationControllerEndpoint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/muates/notificationservice/model/dto/UserActivationRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/muates/notificationservice/model/entity/EmailToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/muates/notificationservice/model/entity/schema/EmailTokenSchema.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/muates/notificationservice/repository/EmailActivationRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/muates/notificationservice/service/EmailActivationService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/muates/notificationservice/service/impl/EmailActivationServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/muates/notificationservice/service/impl/UserMessageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/muates/notificationservice/service/impl/UserMessageServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notification-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/config/UserConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/config/UserConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/config/RabbitMqConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/controller/UserActivationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/controller/UserActivationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/model/entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/model/entity/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/model/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/scheduler/service/impl/UserRemoveServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/scheduler/service/impl/UserRemoveServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/security/CustomUserDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/security/CustomUserDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/service/UserActivationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/service/UserActivationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/service/impl/UserActivationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/service/impl/UserActivationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/service/impl/UserRoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/service/impl/UserRoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/service/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,8 +123,8 @@
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
-      <command value="mvn clean" />
       <command value="mvn clean install -DskipTests=true" />
+      <command value="mvn clean" />
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.user-service">
@@ -250,5 +261,16 @@
     <MESSAGE value="notification client added" />
     <MESSAGE value="notification service client added" />
     <option name="LAST_COMMIT_MESSAGE" value="notification service client added" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/service/impl/UserActivationServiceImpl.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
