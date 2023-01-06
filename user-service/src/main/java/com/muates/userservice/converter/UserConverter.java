@@ -16,6 +16,7 @@ public class UserConverter {
                 .username(request.getUsername())
                 .email(request.getEmail())
                 .password(request.getPassword())
+                .enabled(false)
                 .createdDate(new Date())
                 .build();
     }
