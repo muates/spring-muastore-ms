@@ -40,7 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(POST, "/api/user/v1/register/**").permitAll();
         http.authorizeRequests().antMatchers(GET, "/api/role/v1/get/**").permitAll();
         http.authorizeRequests().antMatchers(GET, "/api/user/v1/activation/**").permitAll();
-        http.authorizeRequests().antMatchers(PUT, "/api/password/v1/change/**").hasAnyAuthority("ROLE_USER");
+        http.authorizeRequests().antMatchers(POST, "/api/password/v1/send/token/**").permitAll();
+        http.authorizeRequests().antMatchers(PUT, "/api/password/v1/update/**").permitAll();
 
         // role ekleme ve çıkarma işlemini sadece adminler yapabilecek
         http.authorizeRequests().antMatchers(POST, "/api/user/role/v1/add/**").hasAnyAuthority("ROLE_ADMIN");
