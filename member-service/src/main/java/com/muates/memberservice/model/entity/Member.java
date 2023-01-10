@@ -22,7 +22,6 @@ import static com.muates.memberservice.model.entity.schema.MemberSchema.*;
 public class Member extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = FIRST_NAME)

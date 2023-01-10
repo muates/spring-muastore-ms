@@ -1,6 +1,7 @@
 package com.muates.userservice.scheduler.service.impl;
 
 import com.muates.commonservice.model.dto.NotificationDto;
+import com.muates.memberserviceclient.client.MemberServiceClient;
 import com.muates.userservice.model.entity.User;
 import com.muates.userservice.repository.UserRepository;
 import com.muates.userservice.scheduler.service.UserRemoveService;
@@ -20,6 +21,7 @@ public class UserRemoveServiceImpl implements UserRemoveService {
 
     private final UserRepository userRepository;
     private final KafkaTemplate<String, NotificationDto> kafkaTemplate;
+    private final MemberServiceClient memberServiceClient;
 
     @Override
     public void removeUser() {
@@ -30,10 +32,11 @@ public class UserRemoveServiceImpl implements UserRemoveService {
         notification.setSubject("Your account removed");
         notification.setText("User removed, because your didn't activate");
 
-        for (var user : users) {
+        users.forEach(user -> {
+            memberServiceClient.deleteMember(user.getId());
             notification.setEmail(user.getEmail());
             kafkaTemplate.send("user_notification", notification);
             log.info("User removed, Id: {}, Email: {}", user.getId(), user.getEmail());
-        }
+        });
     }
 }

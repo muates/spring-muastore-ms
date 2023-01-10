@@ -1,6 +1,8 @@
 package com.muates.userservice.service.impl;
 
 import com.muates.commonservice.model.dto.NotificationDto;
+import com.muates.memberserviceclient.client.MemberServiceClient;
+import com.muates.memberserviceclient.model.MemberCreateRequest;
 import com.muates.userservice.converter.UserConverter;
 import com.muates.userservice.model.dto.request.UserActivationRequest;
 import com.muates.userservice.model.dto.request.UserRegistrationRequest;
@@ -23,12 +25,17 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserActivationService userActivationService;
     private final KafkaTemplate<String, NotificationDto> kafkaTemplate;
+    private final MemberServiceClient memberServiceClient;
 
     @Override
     public User register(UserRegistrationRequest request) {
         User user = UserConverter.convertToUser(request);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
+
+        MemberCreateRequest memberCreateRequest = new MemberCreateRequest();
+        memberCreateRequest.setEmail(user.getEmail());
+        memberServiceClient.createMember(user.getId(), memberCreateRequest);
 
         UserActivationRequest userActivationRequest = createActivationRequest(user);
 
