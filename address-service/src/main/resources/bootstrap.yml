@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: address-service
+
+  cloud:
+    config:
+      profile: native
+      uri: http://localhost:4000

@@ -41,6 +41,7 @@
         <module>notification-service</module>
         <module>member-service</module>
         <module>member-service-client</module>
+        <module>address-service</module>
     </modules>
 
 	<build>
