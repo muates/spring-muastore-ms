@@ -5,24 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8fa5eaff-fc2d-4d3b-a161-e13416350c43" name="Changes" comment="...">
-      <change afterPath="$PROJECT_DIR$/member-service-client/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/member-service-client/src/main/java/com/muates/memberserviceclient/client/MemberServiceClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/member-service-client/src/main/java/com/muates/memberserviceclient/config/MemberServiceClientConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/member-service-client/src/main/java/com/muates/memberserviceclient/model/MemberCreateRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/address-service/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/AddressServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/config/AddressConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/controller/AddressController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/controller/endpoint/AddressEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/converter/AddressConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/model/dto/request/AddressAddRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/model/dto/request/AddressUpdateRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/model/dto/response/AddressResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/model/entity/Address.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/model/entity/schema/AddressSchema.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/repository/AddressRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/service/AddressService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/service/impl/AddressServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/address-service/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/address-service.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/member-service/src/main/java/com/muates/memberservice/model/entity/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/member-service/src/main/java/com/muates/memberservice/model/entity/Member.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notification-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/scheduler/UserSchedulerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/scheduler/UserSchedulerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/scheduler/service/impl/UserRemoveServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/scheduler/service/impl/UserRemoveServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +104,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.muates.addressservice.service.impl" />
       <recent name="com.muates.memberservice.service.impl" />
       <recent name="com.muates.userservice.service.impl" />
       <recent name="com.muates.notificationservice.service.impl" />
@@ -112,7 +117,15 @@
       <command value="mvn clean" />
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.member-service">
+  <component name="RunManager" selected="Spring Boot.address-service">
+    <configuration name="address-service" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" />
+      <module name="address-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.muates.addressservice.AddressServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="config-server" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <option name="ACTIVE_PROFILES" />
       <module name="config-server" />
@@ -155,6 +168,7 @@
     </configuration>
     <list>
       <item itemvalue="Spring Boot.member-service" />
+      <item itemvalue="Spring Boot.address-service" />
       <item itemvalue="Spring Boot.notification-service" />
       <item itemvalue="Spring Boot.config-server" />
       <item itemvalue="Spring Boot.eureka-server" />
