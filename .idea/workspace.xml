@@ -5,28 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8fa5eaff-fc2d-4d3b-a161-e13416350c43" name="Changes" comment="...">
-      <change afterPath="$PROJECT_DIR$/address-service/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/AddressServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/config/AddressConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/controller/AddressController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/controller/endpoint/AddressEndpoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/converter/AddressConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/model/dto/request/AddressAddRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/model/dto/request/AddressUpdateRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/model/dto/response/AddressResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/model/entity/Address.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/model/entity/schema/AddressSchema.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/repository/AddressRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/service/AddressService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/address-service/src/main/java/com/muates/addressservice/service/impl/AddressServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/address-service/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/address-service.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/muates/apigateway/ApiGatewayApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/api-gateway.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notification-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/muates/userservice/config/SecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,11 +103,19 @@
       <command value="mvn clean" />
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.address-service">
+  <component name="RunManager" selected="Spring Boot.api-gateway">
     <configuration name="address-service" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <option name="ACTIVE_PROFILES" />
       <module name="address-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.muates.addressservice.AddressServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="api-gateway" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" />
+      <module name="api-gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.muates.apigateway.ApiGatewayApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -169,6 +163,7 @@
     <list>
       <item itemvalue="Spring Boot.member-service" />
       <item itemvalue="Spring Boot.address-service" />
+      <item itemvalue="Spring Boot.api-gateway" />
       <item itemvalue="Spring Boot.notification-service" />
       <item itemvalue="Spring Boot.config-server" />
       <item itemvalue="Spring Boot.eureka-server" />
@@ -290,7 +285,21 @@
       <option name="project" value="LOCAL" />
       <updated>1673364518035</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="address service added">
+      <created>1673468348611</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1673468348612</updated>
+    </task>
+    <task id="LOCAL-00017" summary="...">
+      <created>1673468361240</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1673468361240</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,6 +329,7 @@
     <MESSAGE value="new auth request added" />
     <MESSAGE value="password service added" />
     <MESSAGE value="member service added" />
+    <MESSAGE value="address service added" />
     <MESSAGE value="..." />
     <option name="LAST_COMMIT_MESSAGE" value="..." />
   </component>

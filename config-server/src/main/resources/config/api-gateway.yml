@@ -1,0 +1,46 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      ## user-service
+      routes[0]:
+        id: user-service
+        uri: lb://user-service
+        predicates[0]: Path=/api/user/**
+      ## notification-service
+      routes[1]:
+        id: notification-service
+        uri: lb://notification-service
+        predicates[0]: Path=/api/notification/**
+      ## member-service
+      routes[2]:
+        id: member-service
+        uri: lb://member-service
+        predicates[0]: Path=/api/member/**
+      ## address-service
+      routes[3]:
+        id: address-service
+        uri: lb://address-service
+        predicates[0]: Path=/api/address/**
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        cloud:
+          gateway:
+            route:
+              RouteDefinitionLocator: INFO
+
+eureka:
+  client:
+    instance:
+      hostname: localhost
+    serviceUrl:
+      defaultZone: http://localhost:4010/eureka
