@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="config-server" />
         <module name="address-service" />
+        <module name="api-gateway" />
         <module name="member-service" />
         <module name="user-service" />
         <module name="member-service-client" />
@@ -23,6 +24,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="address-service" options="-parameters" />
+      <module name="api-gateway" options="-parameters" />
       <module name="common-service" options="" />
       <module name="config-server" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
