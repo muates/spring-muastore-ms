@@ -42,6 +42,7 @@
         <module>member-service</module>
         <module>member-service-client</module>
         <module>address-service</module>
+        <module>api-gateway</module>
     </modules>
 
 	<build>
